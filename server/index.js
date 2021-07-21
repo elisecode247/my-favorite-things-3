@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const data = require('./favorites.json');
+const data = require('./seed/favorites.json');
 const fs = require('fs');
 
 app.use(express.static('public'));
@@ -15,7 +15,7 @@ app.post('/api/v1/favorites', (req, res) => {
     }
     const updatedData = data;
     updatedData.favorites.push(req.body.data);
-    fs.writeFile('./server/favorites.json', JSON.stringify(updatedData), err => {
+    fs.writeFile('./server/seed/favorites.json', JSON.stringify(updatedData), err => {
         if (err) throw err;
         console.log('Received a post fetch request for a new favorite');
         res.json({ success: true });
