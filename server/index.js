@@ -15,7 +15,7 @@ app.post('/api/v1/favorites', (req, res) => {
     }
     const updatedData = data;
     updatedData.favorites.push(req.body.data);
-    fs.writeFile('./server/seed/favorites.json', JSON.stringify(updatedData), err => {
+    fs.writeFile('./seed/favorites.json', JSON.stringify(updatedData), err => {
         if (err) throw err;
         console.log('Received a post fetch request for a new favorite');
         res.json({ success: true });
